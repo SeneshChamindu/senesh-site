@@ -1,0 +1,22 @@
+{
+  "name": "senesh-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website of Senesh Chamindu",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -s . -l $PORT"
+  },
+  "keywords": [
+    "portfolio",
+    "website",
+    "senesh",
+    "whatsapp-bot",
+    "wallpapers",
+    "games"
+  ],
+  "author": "Senesh Chamindu",
+  "license": "MIT",
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}
