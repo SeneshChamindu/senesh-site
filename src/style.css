@@ -1220,3 +1220,69 @@ body.light .secondary-btn {
     }
     }
     
+.music-float {
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    width: 58px;
+    height: 58px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            #4ade80,
+            #15803d 55%,
+            #06110c
+        );
+
+    border: 2px solid rgba(74, 222, 128, 0.45);
+
+    color: white;
+    font-size: 24px;
+
+    cursor: grab;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.45),
+        0 0 25px rgba(34, 197, 94, 0.28);
+
+    z-index: 99999;
+
+    user-select: none;
+    touch-action: none;
+
+    transition:
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.music-float:active {
+    cursor: grabbing;
+    transform: scale(0.95);
+}
+
+.music-float.playing {
+    animation: musicGlow 1.3s infinite;
+}
+
+@keyframes musicGlow {
+    0%,
+    100% {
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.45),
+            0 0 18px rgba(34, 197, 94, 0.3);
+    }
+
+    50% {
+        box-shadow:
+            0 10px 35px rgba(0, 0, 0, 0.5),
+            0 0 40px rgba(74, 222, 128, 0.7);
+    }
+}
