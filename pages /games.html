@@ -1,1 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess | Senesh OFC</title>
 
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background:
+                radial-gradient(circle at top, rgba(34,197,94,.12), transparent 35%),
+                #020806;
+        }
+
+        .game-page {
+            min-height: 100vh;
+            padding: 30px 15px;
+        }
+
+        .topbar {
+            max-width: 850px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .back-btn,
+        .new-btn {
+            border: 1px solid rgba(74,222,128,.25);
+            background: rgba(255,255,255,.05);
+            color: white;
+            padding: 11px 17px;
+            border-radius: 12px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .new-btn {
+            background: #22c55e;
+            color: #021006;
+            font-weight: bold;
+        }
+
+        .game-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .game-header span {
+            color: #4ade80;
+            font-size: 12px;
+            letter-spacing: 4px;
+            font-weight: bold;
+        }
+
+        .game-header h1 {
+            margin-top: 8px;
+            font-size: clamp(35px, 8vw, 55px);
+        }
+
+        .game-header p {
+            color: #91a39a;
+            margin-top: 8px;
+        }
+
+        .game-card {
+            width: min(100%, 720px);
+            margin: auto;
+            padding: 18px;
+            border: 1px solid rgba(74,222,128,.15);
+            border-radius: 24px;
+            background: rgba(255,255,255,.04);
+            box-shadow: 0 25px 70px rgba(0,0,0,.4);
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: #d7e2dc;
+        }
+
+        #turnText {
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        .board {
+            width: min(92vw, 620px);
+            aspect-ratio: 1 / 1;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            overflow: hidden;
+            border-radius: 13px;
+            border: 2px solid rgba(74,222,128,.25);
+        }
+
+        .square {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(27px, 7vw, 52px);
+            user-select: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .light {
+            background: #d7e6d7;
+        }
+
+        .dark {
+            background: #3c7651;
+        }
+
+        .square.selected {
+            box-shadow: inset 0 0 0 5px #22c55e;
+        }
+
+        .square.possible::after {
+            content: "";
+            width: 24%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: rgba(0,0,0,.35);
+            position: absolute;
+        }
+
+        .square.capture::after {
+            content: "";
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            border: 5px solid rgba(220,38,38,.65);
+            position: absolute;
+        }
+
+        .message {
+            min-height: 25px;
+            margin-top: 15px;
+            text-align: center;
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .game-card {
+                padding: 10px;
+                border-radius: 18px;
+            }
+
+            .game-info {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="game-page">
+
+    <div class="topbar">
+        <a href="../index.html" class="back-btn">← Home</a>
+        <button class="new-btn" onclick="resetGame()">New Game</button>
+    </div>
+
+    <div class="game-header">
+        <span>SENESH OFC GAMES</span>
+        <h1>♟ Chess</h1>
+        <p>Play chess directly in your browser.</p>
+    </div>
+
+    <div class="game-card">
+
+        <div class="game-info">
+            <div>
+                Turn:
+                <span id="turnText">White</span>
+            </div>
+
+            <div id="statusText">
+                Game Active
+            </div>
+        </div>
+
+        <div id="chessBoard" class="board"></div>
+
+        <div id="message" class="message"></div>
+
+    </div>
+
+</div>
+
+<script src="../src/chess.js"></script>
+
+</body>
+</html>
